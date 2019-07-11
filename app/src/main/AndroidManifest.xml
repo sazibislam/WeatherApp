@@ -21,7 +21,7 @@
       android:theme="@style/AppTheme"
       tools:ignore="GoogleAppIndexingWarning">
     <activity
-        android:name=".ui.mapview.MapActivity"
+        android:name=".ui.mapview.view.MapActivity"
         android:exported="true"
         android:screenOrientation="portrait"
         />

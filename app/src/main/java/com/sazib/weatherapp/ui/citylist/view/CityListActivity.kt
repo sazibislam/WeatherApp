@@ -45,7 +45,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
   }
 
   override fun initView() {
-    setupToolbar(toolbar, "Weather App")
+    setupToolbar(toolbar,"Weather App")
 
     adapter = CityListAdapter()
 
@@ -84,12 +84,12 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     }
   }
 
+  //data setup from Api calling
   //override fun setAdapterData(data_: List<CityList>) = adapter.addDataToList(data_)
   override fun setAdapterData(data_: List<CityListDataModel>) = adapter.addDataToList(data_)
 
-  /* override fun setAdapterPage(page_: Int) {
-
-   }*/
+  //for data pagination
+  // override fun setAdapterPage(page_: Int) {}
 
   override fun getIsLoading(): Boolean = isLoading
 
