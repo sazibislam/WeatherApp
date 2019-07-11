@@ -105,7 +105,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
 
   override fun click(data: CityListDataModel) {
     //start map activity
-    startActivity(MapActivity.getStartIntent(applicationContext))
+    startActivity(MapActivity.getStartIntent(applicationContext, data))
     AppLogger.d(data)
   }
 }

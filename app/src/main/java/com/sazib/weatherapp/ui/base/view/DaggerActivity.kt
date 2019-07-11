@@ -18,6 +18,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.text.toSpanned
 import com.sazib.weatherapp.R
+import com.sazib.weatherapp.ui.base.view.DaggerFragment.CallBack
 import com.sazib.weatherapp.utils.CommonUtil
 import com.sazib.weatherapp.utils.IVSnackBar
 import com.sazib.weatherapp.utils.NetworkUtils
@@ -26,7 +27,7 @@ import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
 
-abstract class DaggerActivity : DaggerAppCompatActivity(), MVPView {
+abstract class DaggerActivity : DaggerAppCompatActivity(), MVPView, CallBack {
 
   private var dialog: Dialog? = null
   private var toast: Toast? = null
@@ -237,6 +238,14 @@ abstract class DaggerActivity : DaggerAppCompatActivity(), MVPView {
     message?.let { message_ ->
       showMessage(message_)
     } ?: showMessage(R.string.general_error)
+  }
+
+  override fun onFragmentAttached() {
+
+  }
+
+  override fun onFragmentDetached(tag: String) {
+
   }
 
   private fun performDI() = AndroidInjection.inject(this)
