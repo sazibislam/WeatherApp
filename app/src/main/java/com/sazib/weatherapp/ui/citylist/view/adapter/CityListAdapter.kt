@@ -58,8 +58,11 @@ class CityListAdapter(private var data: MutableList<CityListDataModel> = ArrayLi
       model.name?.let { name_ ->
         itemView.tvCityName.text = name_
       }
-      model.name?.let { weather_ ->
-        itemView.tvCityName.text = weather_
+      model.weatherType?.let { type ->
+        itemView.tvType.text = type
+      }
+      model.temperature?.let { temperature ->
+        itemView.tvTemperature.text = temperature
       }
 
       itemView.setOnClickListener { callback?.click(model) }

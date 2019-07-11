@@ -58,6 +58,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
 
     //presenter.getCityListData()
 
+    setAdapterData(AppDataUtils.getCityListData(applicationContext))
   }
 
   private fun getLocation() {
@@ -84,8 +85,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
   }
 
   //override fun setAdapterData(data_: List<CityList>) = adapter.addDataToList(data_)
-  override fun setAdapterData(data_: List<CityListDataModel>) =
-    adapter.addDataToList(AppDataUtils.getCityListData(applicationContext))
+  override fun setAdapterData(data_: List<CityListDataModel>) = adapter.addDataToList(data_)
 
   /* override fun setAdapterPage(page_: Int) {
 
@@ -103,6 +103,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
   }
 
   override fun click(data: CityListDataModel) {
-
+    //start map activity
+    //startActivity(CityListActivity.getStartIntent(applicationContext))
   }
 }
