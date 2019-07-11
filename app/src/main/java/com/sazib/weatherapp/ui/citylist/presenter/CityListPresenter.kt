@@ -35,7 +35,9 @@ class CityListPresenter<V : CityListMVPView, I : CityListMVPInteractor> @Inject 
       interactor?.let { interactor_ ->
         compositeDisposable.add(
             interactor_.cityListApiCall(
-                CityListRequest(appid = interactor_.getAppid(), cnt = "50", lat = "23.68", lon = "90.35")
+                CityListRequest(
+                    appid = interactor_.getAppid(), cnt = "50", lat = "23.68", lon = "90.35"
+                )
             ).compose(SchedulerProvider().ioToMainObservableScheduler())
                 .subscribe({ response ->
                   view.hideProgress()
@@ -46,7 +48,7 @@ class CityListPresenter<V : CityListMVPView, I : CityListMVPInteractor> @Inject 
                         response.cityList?.let { data_ ->
                           AppLogger.d(data_)
                           data_.let { data__ ->
-                            view.setAdapterData(data__)
+                            // view.setAdapterData(data__)
                           }
                         }
                       }

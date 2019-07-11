@@ -15,5 +15,6 @@ object AppConstants {
   internal const val SEED_LOCATION: String = "seed/location.json"
   internal const val BASEURL: String = "http://api.openweathermap.org/data/2.5"
   internal const val APPID: String = "e384f9ac095b2109c751d95296f8ea76"
+  internal const val MAP_API_KEY: String = "AIzaSyC_ollG1pQOa1ckLAgfGI632Qufl3QRVhw"
 
 }

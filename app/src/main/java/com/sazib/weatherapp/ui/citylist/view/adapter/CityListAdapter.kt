@@ -5,14 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sazib.weatherapp.R
-import com.sazib.weatherapp.data.network.response.CityListResponse
 import com.sazib.weatherapp.ui.base.view.BaseViewHolder
+import com.sazib.weatherapp.ui.citylist.view.model.CityListDataModel
 import com.sazib.weatherapp.utils.logger.AppLogger
 import kotlinx.android.synthetic.main.list_item_city.view.tvCityName
 import kotlinx.android.synthetic.main.list_item_city.view.tvTemperature
 import kotlinx.android.synthetic.main.list_item_city.view.tvType
 
-class CityListAdapter(private var data: MutableList<CityListResponse.CityList> = ArrayList()) :
+class CityListAdapter(private var data: MutableList<CityListDataModel> = ArrayList()) :
     RecyclerView.Adapter<BaseViewHolder>() {
 
   private var callback: Callback? = null
@@ -33,7 +33,7 @@ class CityListAdapter(private var data: MutableList<CityListResponse.CityList> =
       )
   )
 
-  internal fun addDataToList(data: List<CityListResponse.CityList>) {
+  internal fun addDataToList(data: List<CityListDataModel>) {
     this.data.clear()
     this.data.addAll(data)
     notifyDataSetChanged()
@@ -68,6 +68,6 @@ class CityListAdapter(private var data: MutableList<CityListResponse.CityList> =
   }
 
   interface Callback {
-    fun click(data: CityListResponse.CityList)
+    fun click(data: CityListDataModel)
   }
 }

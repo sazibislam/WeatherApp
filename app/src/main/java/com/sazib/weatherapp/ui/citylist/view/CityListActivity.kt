@@ -11,12 +11,12 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sazib.weatherapp.R
-import com.sazib.weatherapp.data.network.response.CityListResponse.CityList
 import com.sazib.weatherapp.ui.base.view.DaggerActivity
 import com.sazib.weatherapp.ui.citylist.interactor.CityListMVPInteractor
 import com.sazib.weatherapp.ui.citylist.presenter.CityListPresenter
 import com.sazib.weatherapp.ui.citylist.view.adapter.CityListAdapter
 import com.sazib.weatherapp.ui.citylist.view.adapter.CityListAdapter.Callback
+import com.sazib.weatherapp.ui.citylist.view.model.CityListDataModel
 import com.sazib.weatherapp.utils.logger.AppLogger
 import kotlinx.android.synthetic.main.activity_city_list.rvCityList
 import kotlinx.android.synthetic.main.activity_city_list.toolbar
@@ -53,7 +53,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     rvCityList.adapter = adapter
     adapter.setCallback(this)
 
-    getLocation()
+    //getLocation()
 
     //presenter.getCityListData()
 
@@ -82,7 +82,8 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     }
   }
 
-  override fun setAdapterData(data_: List<CityList>) = adapter.addDataToList(data_)
+  //override fun setAdapterData(data_: List<CityList>) = adapter.addDataToList(data_)
+  override fun setAdapterData(data_: List<CityListDataModel>) = adapter.addDataToList(data_)
 
   /* override fun setAdapterPage(page_: Int) {
 
@@ -99,8 +100,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     super.onDestroy()
   }
 
-  override fun click(data: CityList) {
+  override fun click(data: CityListDataModel) {
 
   }
-
 }
