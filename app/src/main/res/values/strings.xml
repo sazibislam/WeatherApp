@@ -1,0 +1,24 @@
+<resources>
+  <string name="app_name">Weather App</string>
+
+  <!--play store-->
+
+
+  <string name="weather_app">WeatherApp</string>
+
+
+  <!--App Message-->
+  <string name="api_retry_error">Please retry!</string>
+  <string name="api_default_error">Something wrong happened!</string>
+  <string name="connection_error">Internet connection lost!</string>
+  <string name="general_error">Something wrong</string>
+
+
+  <string name="city_name">City Name</string>
+  <string name="raining">Raining</string>
+
+
+  <string name="no_internet">No Internet</string>
+
+
+</resources>
