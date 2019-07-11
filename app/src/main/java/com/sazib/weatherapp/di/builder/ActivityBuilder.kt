@@ -2,6 +2,8 @@ package com.sazib.weatherapp.di.builder
 
 import com.sazib.weatherapp.ui.citylist.CityListActivityModule
 import com.sazib.weatherapp.ui.citylist.view.CityListActivity
+import com.sazib.weatherapp.ui.mapview.MapActivityModule
+import com.sazib.weatherapp.ui.mapview.view.MapActivity
 import com.sazib.weatherapp.ui.splash.SplashActivityModule
 import com.sazib.weatherapp.ui.splash.view.SplashActivity
 import dagger.Module
@@ -15,5 +17,8 @@ abstract class ActivityBuilder {
 
   @ContributesAndroidInjector(modules = [(CityListActivityModule::class)])
   abstract fun bindCityListActivity(): CityListActivity
+
+  @ContributesAndroidInjector(modules = [(MapActivityModule::class)])
+  abstract fun bindMapActivity(): MapActivity
 
 }

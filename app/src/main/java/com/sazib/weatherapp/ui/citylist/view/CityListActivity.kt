@@ -17,6 +17,7 @@ import com.sazib.weatherapp.ui.citylist.presenter.CityListPresenter
 import com.sazib.weatherapp.ui.citylist.view.adapter.CityListAdapter
 import com.sazib.weatherapp.ui.citylist.view.adapter.CityListAdapter.Callback
 import com.sazib.weatherapp.ui.citylist.view.model.CityListDataModel
+import com.sazib.weatherapp.ui.mapview.view.MapActivity
 import com.sazib.weatherapp.utils.AppDataUtils
 import com.sazib.weatherapp.utils.logger.AppLogger
 import kotlinx.android.synthetic.main.activity_city_list.rvCityList
@@ -45,7 +46,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
   }
 
   override fun initView() {
-    setupToolbar(toolbar,"Weather App")
+    setupToolbar(toolbar, "Weather App")
 
     adapter = CityListAdapter()
 
@@ -104,6 +105,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
 
   override fun click(data: CityListDataModel) {
     //start map activity
-    //startActivity(CityListActivity.getStartIntent(applicationContext))
+    startActivity(MapActivity.getStartIntent(applicationContext))
+    AppLogger.d(data)
   }
 }

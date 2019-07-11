@@ -28,9 +28,7 @@ class CityListAdapter(private var data: MutableList<CityListDataModel> = ArrayLi
     parent: ViewGroup,
     viewType: Int
   ): BaseViewHolder = ViewHolder(
-      LayoutInflater.from(parent.context).inflate(
-          R.layout.list_item_city, parent, false
-      )
+      LayoutInflater.from(parent.context).inflate(R.layout.list_item_city, parent, false)
   )
 
   internal fun addDataToList(data: List<CityListDataModel>) {

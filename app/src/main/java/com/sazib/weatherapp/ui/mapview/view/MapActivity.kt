@@ -1,7 +1,8 @@
 package com.sazib.weatherapp.ui.mapview.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -13,6 +14,10 @@ import com.sazib.weatherapp.ui.base.view.DaggerActivity
 
 class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback {
 
+  companion object {
+    fun getStartIntent(context: Context): Intent = Intent(context, MapActivity::class.java)
+  }
+
   private lateinit var mMap: GoogleMap
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,9 +26,7 @@ class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback {
 
   }
 
-
   override fun initView() {
-
 
     val mapFragment = supportFragmentManager
         .findFragmentById(R.id.map) as SupportMapFragment
