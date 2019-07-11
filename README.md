@@ -1,5 +1,5 @@
 # WeatherApp
-#WeatherApp #KOTLIN #MVP #DAGGER2 #RX Android #RX JAVA #MVP
+#WeatherApp #KOTLIN #JAVA #MVP #DAGGER2 #RX Android #RX JAVA #MVP
 
 If anyone wants to follow MVP architucture pattern you can start from here. Copy the code and modify as you like.
 
