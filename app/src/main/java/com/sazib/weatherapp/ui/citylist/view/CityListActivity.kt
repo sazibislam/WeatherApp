@@ -11,6 +11,9 @@ import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sazib.weatherapp.R
+import com.sazib.weatherapp.data.network.response.CityListResponse
+import com.sazib.weatherapp.data.network.response.CityListResponse.CityList
+import com.sazib.weatherapp.data.network.response.WeatherDataResponse
 import com.sazib.weatherapp.ui.base.view.DaggerActivity
 import com.sazib.weatherapp.ui.citylist.interactor.CityListMVPInteractor
 import com.sazib.weatherapp.ui.citylist.presenter.CityListPresenter
@@ -55,14 +58,10 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     rvCityList.adapter = adapter
     adapter.setCallback(this)
 
-    //getLocation()
-
-    //presenter.getCityListData()
-
-    setAdapterData(AppDataUtils.getCityListData(applicationContext))
+    //setAdapterData(AppDataUtils.getCityListData(applicationContext))
   }
 
-  private fun getLocation() {
+  override fun getLocation() {
     locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
     val criteria = Criteria()
 
@@ -86,8 +85,10 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
   }
 
   //data setup from Api calling
-  //override fun setAdapterData(data_: List<CityList>) = adapter.addDataToList(data_)
-  override fun setAdapterData(data_: List<CityListDataModel>) = adapter.addDataToList(data_)
+  override fun setAdapterData(data_: List<WeatherDataResponse.ListData>) = adapter.addDataToList(data_)
+
+  //setup dummy data from data utils
+  //override fun setAdapterData(data_: List<CityListDataModel>) = adapter.addDataToList(data_)
 
   //for data pagination
   // override fun setAdapterPage(page_: Int) {}

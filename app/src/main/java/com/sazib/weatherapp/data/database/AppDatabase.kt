@@ -5,15 +5,15 @@ import androidx.room.RoomDatabase
 import com.sazib.weatherapp.BuildConfig
 
 @Database(
-    // entities = [(HealthArticle::class), (HealthService::class)],
+    // entities = [(CityList::class), (CityListService::class)],
     entities = [],
     version = BuildConfig.VERSION_CODE,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
-/*  abstract fun healthArticleDao(): HealthArticleDao
+/*  abstract fun CityListDao(): CityListDao
 
-  abstract fun healthServiceDao(): HealthServiceDao*/
+  abstract fun CityListServiceDao():CityListServiceDao*/
 
 }

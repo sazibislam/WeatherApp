@@ -16,12 +16,12 @@ android {
   }
   buildTypes {
     debug {
-      buildConfigField("String", "BASE_URL", "\"api.openweathermap.org\"")
+      buildConfigField("String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5\"")
     }
     release {
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-      buildConfigField("String", "BASE_URL", "\"api.openweathermap.org\"")
+      buildConfigField("String", "BASE_URL", "\"http://api.openweathermap.org/data/2.5\"")
     }
   }
   buildToolsVersion '28.0.3'
