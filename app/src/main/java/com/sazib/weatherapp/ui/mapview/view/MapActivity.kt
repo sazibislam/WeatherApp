@@ -13,6 +13,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.sazib.weatherapp.R
+import com.sazib.weatherapp.data.network.response.CityWeatherResponse.Main
+import com.sazib.weatherapp.data.network.response.CityWeatherResponse.Weather
+import com.sazib.weatherapp.data.network.response.CityWeatherResponse.Wind
 import com.sazib.weatherapp.ui.base.view.DaggerActivity
 import com.sazib.weatherapp.ui.mapview.interactor.MapMVPInteractor
 import com.sazib.weatherapp.ui.mapview.presenter.MapPresenter
@@ -57,8 +60,6 @@ class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback/*, Location
 
     //checkMapPermission()
 
-    updateInfo()
-
   }
 
   private fun checkMapPermission() {
@@ -101,13 +102,18 @@ class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback/*, Location
     super.onDestroy()
   }
 
-  fun updateInfo() {
+  override fun updateInfo(
+    weather: List<Weather>?,
+    main: Main?,
+    wind: Wind?
+  ) {
     tvCityName.text = presenter.getCityName()
-    tvWeatherType.text = ""
-    tvHumidity.text = ""
-    tvWindSpeed.text = ""
-    tvMaxTemp.text = ""
-    tvMinTemp.text = ""
-    tvTemperature.text = ""
+    tvWeatherType.text = weather?.get(0)
+        ?.description
+    main?.humidity?.let { humidity_ -> tvHumidity.text = "Humidity: $humidity_" }
+    wind?.speed.let { wind_ -> tvWindSpeed.text = "Speed: $wind_" }
+    main?.tempMax.let { max_ -> tvMaxTemp.text = "Max. temp: $max_" }
+    main?.tempMin.let { min_ -> tvMinTemp.text = "Min. temp: $min_" }
+    main?.temp?.let { temp_ -> tvTemperature.text = "${temp_.toInt() - 273} c" }
   }
 }
