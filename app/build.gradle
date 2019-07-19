@@ -24,6 +24,25 @@ android {
       buildConfigField("String", "BASE_URL", "\"http://api.openweathermap.org\"")
     }
   }
+
+  aaptOptions {
+    cruncherEnabled = false
+  }
+    splits {
+    abi {
+      // Enable ABI split
+      enable true
+
+    // Clear list of ABIs
+    reset()
+
+    // Specify each architecture currently supported by the Voice SDK
+    include "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+
+    // Specify that we do not want an additional universal SDK
+    universalApk false
+  }
+}
   buildToolsVersion '28.0.3'
 }
 
