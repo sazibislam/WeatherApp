@@ -4,22 +4,30 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Location
-import android.location.LocationListener
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.sazib.weatherapp.R
 import com.sazib.weatherapp.ui.base.view.DaggerActivity
 import com.sazib.weatherapp.ui.mapview.interactor.MapMVPInteractor
 import com.sazib.weatherapp.ui.mapview.presenter.MapPresenter
 import com.sazib.weatherapp.utils.AppConstants
 import kotlinx.android.synthetic.main.activity_map.toolbar
+import kotlinx.android.synthetic.main.activity_map.tvCityName
+import kotlinx.android.synthetic.main.activity_map.tvHumidity
+import kotlinx.android.synthetic.main.activity_map.tvMaxTemp
+import kotlinx.android.synthetic.main.activity_map.tvMinTemp
+import kotlinx.android.synthetic.main.activity_map.tvTemperature
+import kotlinx.android.synthetic.main.activity_map.tvWeatherType
+import kotlinx.android.synthetic.main.activity_map.tvWindSpeed
 import javax.inject.Inject
 
-class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback, LocationListener {
+class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback/*, LocationListener */ {
 
   @Inject lateinit var presenter: MapPresenter<MapMVPView, MapMVPInteractor>
 
@@ -48,6 +56,9 @@ class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback, LocationLi
     mapFragment?.getMapAsync(this)
 
     //checkMapPermission()
+
+    updateInfo()
+
   }
 
   private fun checkMapPermission() {
@@ -68,39 +79,35 @@ class MapActivity : DaggerActivity(), MapMVPView, OnMapReadyCallback, LocationLi
 
   override fun onMapReady(gMap: GoogleMap) {
 
+    var lat = 0.0
+    var lon = 0.0
     mMap = gMap
-/*
-    // Add a marker in Sydney and move the camera
-    val sydney = LatLng(-23.68, 90.35)
-    mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
+
+    presenter.getLat()
+        ?.let { lat_ -> lat = lat_ }
+    presenter.getLon()
+        ?.let { lon_ -> lon = lon_ }
+
+    val position = LatLng(lat, lon)
+    mMap.addMarker(MarkerOptions().position(position).title(presenter.getCityName()))
+    mMap.moveCamera(CameraUpdateFactory.newLatLng(position))
 
     //mMap.isMyLocationEnabled()
-
-  }
-
-  override fun onLocationChanged(location: Location?) {
-    //mMap.clear()
-  }
-
-  override fun onStatusChanged(
-    provider: String?,
-    status: Int,
-    extras: Bundle?
-  ) {
-
-  }
-
-  override fun onProviderEnabled(provider: String?) {
-
-  }
-
-  override fun onProviderDisabled(provider: String?) {
 
   }
 
   override fun onDestroy() {
     presenter.onDetach()
     super.onDestroy()
+  }
+
+  fun updateInfo() {
+    tvCityName.text = presenter.getCityName()
+    tvWeatherType.text = ""
+    tvHumidity.text = ""
+    tvWindSpeed.text = ""
+    tvMaxTemp.text = ""
+    tvMinTemp.text = ""
+    tvTemperature.text = ""
   }
 }

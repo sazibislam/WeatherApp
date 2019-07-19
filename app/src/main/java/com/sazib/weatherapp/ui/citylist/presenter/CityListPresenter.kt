@@ -89,4 +89,8 @@ class CityListPresenter<V : CityListMVPView, I : CityListMVPInteractor> @Inject 
     interactor?.setLon(longitude)
     getCityListData()
   }
+
+  override fun setCity(city: String) {
+    interactor?.setCity(city)
+  }
 }

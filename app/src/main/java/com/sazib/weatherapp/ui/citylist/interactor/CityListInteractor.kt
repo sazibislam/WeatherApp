@@ -25,4 +25,6 @@ class CityListInteractor @Inject constructor(
   override fun getLat(): String? = preferenceHelper.getLatitude()
 
   override fun getLon(): String? = preferenceHelper.getLongitude()
+
+  override fun setCity(city: String) = preferenceHelper.setCity(city)
 }

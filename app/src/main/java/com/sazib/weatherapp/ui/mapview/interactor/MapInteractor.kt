@@ -8,4 +8,11 @@ import javax.inject.Inject
 class MapInteractor @Inject constructor(
   preferenceHelper: PreferenceHelper,
   apiHelper: ApiHelper
-) : BaseInteractor(preferenceHelper, apiHelper), MapMVPInteractor
+) : BaseInteractor(preferenceHelper, apiHelper), MapMVPInteractor {
+
+  override fun getLat(): Double? = preferenceHelper.getLatitude()?.toDouble()
+
+  override fun getLon(): Double? = preferenceHelper.getLongitude()?.toDouble()
+
+  override fun getCityName(): String? = preferenceHelper.getCity()
+}

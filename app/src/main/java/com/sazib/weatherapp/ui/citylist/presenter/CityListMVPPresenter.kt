@@ -13,4 +13,6 @@ interface CityListMVPPresenter<V : CityListMVPView, I : CityListMVPInteractor> :
     latitude: String,
     longitude: String
   )
+
+  fun setCity(city: String)
 }

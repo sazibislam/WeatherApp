@@ -20,4 +20,14 @@ class MapPresenter<V : MapMVPView, I : MapMVPInteractor> @Inject internal constr
     getView()?.initView()
 
   }
+
+  override fun getMapData() {
+
+  }
+
+  override fun getLat(): Double? = interactor?.getLat()
+
+  override fun getLon(): Double? = interactor?.getLon()
+
+  override fun getCityName(): String = interactor?.getCityName() ?: ""
 }

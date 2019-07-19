@@ -18,6 +18,7 @@ class AppPreferenceHelper @Inject constructor(
     private const val PREF_KEY_APP_ID = "pref_key_app_id"
     private const val PREF_KEY_APP_LATITUDE = "pref_key_app_latitude"
     private const val PREF_KEY_APP_LONGITUDE = "pref_key_app_longitude"
+    private const val PREF_KEY_APP_CITY = "pref_key_app_city"
   }
 
   private val mPrefs: SharedPreferences = context.getSharedPreferences(
@@ -54,4 +55,9 @@ class AppPreferenceHelper @Inject constructor(
 
   override fun setLongitude(longitude: String) =
     mPrefs.edit().putString(PREF_KEY_APP_LONGITUDE, longitude).apply()
+
+  override fun getCity(): String? = mPrefs.getString(PREF_KEY_APP_CITY, "")
+
+  override fun setCity(city: String) = mPrefs.edit().putString(PREF_KEY_APP_CITY, city).apply()
+
 }

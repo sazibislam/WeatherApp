@@ -20,4 +20,6 @@ interface CityListMVPInteractor : MVPInteractor {
   fun getLat(): String?
 
   fun getLon(): String?
+
+  fun setCity(city: String)
 }

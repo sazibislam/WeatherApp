@@ -201,7 +201,8 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     longitude: String
   ) = presenter.setLocation(latitude, longitude)
 
-  override fun click() {
+  override fun click(cityName: String?) {
+    cityName?.let { cityName_ -> presenter.setCity(cityName_) }
     startActivity(MapActivity.getStartIntent(applicationContext))
   }
 }

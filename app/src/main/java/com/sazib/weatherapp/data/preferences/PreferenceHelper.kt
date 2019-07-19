@@ -26,4 +26,8 @@ interface PreferenceHelper {
 
   fun setLongitude(longitude: String)
 
+  fun setCity(city: String)
+
+  fun getCity(): String?
+
 }

@@ -53,6 +53,8 @@ class CityListAdapter(private var data: MutableList<WeatherDataResponse.ListData
     override fun onBind(position: Int) {
       val model = data[position]
 
+
+
       model.name?.let { name_ ->
         itemView.tvCityName.text = name_
       }
@@ -64,11 +66,11 @@ class CityListAdapter(private var data: MutableList<WeatherDataResponse.ListData
         val degree = (temperature.toInt() - 273.15).toInt()
         itemView.tvTemperature.text = "${degree} c"
       }
-      itemView.setOnClickListener { callback?.click() }
+      itemView.setOnClickListener { callback?.click(model.name) }
     }
   }
 
   interface Callback {
-    fun click()
+    fun click(cityName: String?)
   }
 }

@@ -2,9 +2,7 @@ package com.sazib.weatherapp.di.module
 
 import android.app.Application
 import android.content.Context
-import androidx.room.Room
 import com.sazib.weatherapp.BuildConfig
-import com.sazib.weatherapp.data.database.AppDatabase
 import com.sazib.weatherapp.data.network.ApiHeader
 import com.sazib.weatherapp.data.network.ApiHelper
 import com.sazib.weatherapp.data.network.AppApiHelper
@@ -27,10 +25,10 @@ class AppModule {
 
   @Provides @Singleton internal fun provideContext(application: Application): Context = application
 
-  @Provides @Singleton internal fun provideAppDatabase(context: Context): AppDatabase =
-    Room.databaseBuilder(
-        context.applicationContext, AppDatabase::class.java, AppConstants.DB_NAME
-    ).allowMainThreadQueries().build()
+  /* @Provides @Singleton internal fun provideAppDatabase(context: Context): AppDatabase =
+     Room.databaseBuilder(
+         context.applicationContext, AppDatabase::class.java, AppConstants.DB_NAME
+     ).allowMainThreadQueries().build()*/
 
   @Provides @AppKey internal fun provideAppKey(context: Context): String =
     CertSHA1.getCertificateSHA1(context.applicationContext)
