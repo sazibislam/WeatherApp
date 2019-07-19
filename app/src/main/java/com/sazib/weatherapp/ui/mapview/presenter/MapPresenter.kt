@@ -18,5 +18,6 @@ class MapPresenter<V : MapMVPView, I : MapMVPInteractor> @Inject internal constr
   override fun onAttach(view: V?) {
     super.onAttach(view)
     getView()?.initView()
+
   }
 }

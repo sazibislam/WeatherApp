@@ -201,7 +201,7 @@ class CityListActivity : DaggerActivity(), CityListMVPView, Callback {
     longitude: String
   ) = presenter.setLocation(latitude, longitude)
 
-  override fun click(data: WeatherDataResponse.ListData) {
-    startActivity(MapActivity.getStartIntent(applicationContext, data))
+  override fun click() {
+    startActivity(MapActivity.getStartIntent(applicationContext))
   }
 }
