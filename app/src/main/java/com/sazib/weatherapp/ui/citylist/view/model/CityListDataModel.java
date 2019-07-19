@@ -39,7 +39,7 @@ public class CityListDataModel {
   }
 
   @NonNull @Override public String toString() {
-    return "CityList{"
+    return "HomeInfo{"
         + "cityName='"
         + cityName
         + '\''

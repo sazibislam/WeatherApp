@@ -23,14 +23,13 @@ class SplashActivity : DaggerActivity(), SplashMVPView {
     window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN)
     setContentView(R.layout.activity_splash)
     presenter.onAttach(this)
-
   }
 
   override fun start(
     isLoggedIn: Boolean
   ) {
     mHandler = Handler()
-    mRunnable = RunSplash(isLoggedIn)
+      mRunnable = RunSplash()
     mHandler?.postDelayed(mRunnable, AppConstants.SPLASH_TIME_OUT)
   }
 
@@ -40,8 +39,7 @@ class SplashActivity : DaggerActivity(), SplashMVPView {
     super.onDestroy()
   }
 
-  private inner class RunSplash internal constructor(private val isLoggedIn: Boolean) : Runnable {
-
+    private inner class RunSplash internal constructor() : Runnable {
     override fun run() {
       startActivity(CityListActivity.getStartIntent(applicationContext))
       finishIt()

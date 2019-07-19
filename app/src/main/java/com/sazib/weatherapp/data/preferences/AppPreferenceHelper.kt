@@ -12,14 +12,23 @@ class AppPreferenceHelper @Inject constructor(
 ) : PreferenceHelper {
 
   companion object {
+    private const val PREF_KEY_LOGGED_IN = "pref_key_logged_in"
     private const val PREF_KEY_ACCESS_TOKEN = "pref_key_access_token"
     private const val PREF_KEY_USER_ID = "pref_key_user_id"
     private const val PREF_KEY_APP_ID = "pref_key_app_id"
+    private const val PREF_KEY_APP_LATITUDE = "pref_key_app_latitude"
+    private const val PREF_KEY_APP_LONGITUDE = "pref_key_app_longitude"
   }
 
   private val mPrefs: SharedPreferences = context.getSharedPreferences(
       prefFileName, Context.MODE_PRIVATE
   )
+
+  override fun isLoggedIn(): Boolean = mPrefs.getBoolean(PREF_KEY_LOGGED_IN, false)
+
+  override fun setLoggedIn(isLoggedIn: Boolean) = mPrefs.edit().putBoolean(
+      PREF_KEY_LOGGED_IN, isLoggedIn
+  ).apply()
 
   override fun getAccessToken(): String = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, "") ?: ""
 
@@ -29,13 +38,20 @@ class AppPreferenceHelper @Inject constructor(
 
   override fun getUserId(): String = mPrefs.getString(PREF_KEY_USER_ID, "") ?: ""
 
-  override fun setUserId(userId: String) = mPrefs.edit().putString(PREF_KEY_USER_ID, userId).apply()
+  override fun setUserId(userId: String) =
+    mPrefs.edit().putString(PREF_KEY_USER_ID, userId).apply()
 
-  override fun getAppWeatherId(): String =
-    mPrefs.getString(PREF_KEY_APP_ID, AppConstants.APPID)
-        ?: "e384f9ac095b2109c751d95296f8ea76"
+  override fun getAppId(): String? = mPrefs.getString(PREF_KEY_APP_ID, AppConstants.APPID)
 
-  override fun setAppId(id: String) =
-    mPrefs.edit().putString(PREF_KEY_APP_ID, AppConstants.APPID).apply()
+  override fun setAppId(id: String) = mPrefs.edit().putString(PREF_KEY_APP_ID, id).apply()
 
+  override fun getLatitude(): String? = mPrefs.getString(PREF_KEY_APP_LATITUDE, "")
+
+  override fun setLatitude(latitude: String) =
+    mPrefs.edit().putString(PREF_KEY_APP_LATITUDE, latitude).apply()
+
+  override fun getLongitude(): String? = mPrefs.getString(PREF_KEY_APP_LONGITUDE, "")
+
+  override fun setLongitude(longitude: String) =
+    mPrefs.edit().putString(PREF_KEY_APP_LONGITUDE, longitude).apply()
 }

@@ -19,7 +19,7 @@ data class WeatherDataResponse(
 
   data class Wind(
     @SerializedName("speed") @Expose var speed: Double? = null,
-    @SerializedName("deg") @Expose var deg: Double? = null
+    @SerializedName("deg") @Expose var deg: Float? = null
   )
 
   data class ListData(
@@ -45,11 +45,6 @@ data class WeatherDataResponse(
       @SerializedName("all") @Expose var all: Int? = null
     )
 
-    data class Wind(
-      @SerializedName("speed") @Expose var speed: Double? = null,
-      @SerializedName("deg") @Expose var deg: Int? = null
-    )
-
     data class Weather(
       @SerializedName("id") @Expose var id: Int? = null,
       @SerializedName("main") @Expose var main: String? = null,
@@ -63,7 +58,7 @@ data class WeatherDataResponse(
 
     data class Main(
       @SerializedName("temp") @Expose var temp: Double? = null,
-      @SerializedName("pressure") @Expose var pressure: Int? = null,
+      @SerializedName("pressure") @Expose var pressure: Float? = null,
       @SerializedName("humidity") @Expose var humidity: Int? = null,
       @SerializedName("temp_min") @Expose var tempMin: Double? = null,
       @SerializedName("temp_max") @Expose var tempMax: Double? = null

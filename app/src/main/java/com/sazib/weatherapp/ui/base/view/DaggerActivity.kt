@@ -23,6 +23,7 @@ import com.sazib.weatherapp.utils.CommonUtil
 import com.sazib.weatherapp.utils.IVSnackBar
 import com.sazib.weatherapp.utils.NetworkUtils
 import com.sazib.weatherapp.utils.logger.AppLogger
+import com.sazib.weatherapp.utils.view.MarginItemDecoration
 import dagger.android.AndroidInjection
 import dagger.android.support.DaggerAppCompatActivity
 import io.github.inflationx.viewpump.ViewPumpContextWrapper
@@ -31,6 +32,7 @@ abstract class DaggerActivity : DaggerAppCompatActivity(), MVPView, CallBack {
 
   private var dialog: Dialog? = null
   private var toast: Toast? = null
+    internal val decoration = MarginItemDecoration(8)
 
   override fun onCreate(savedInstanceState: Bundle?) {
     performDI()

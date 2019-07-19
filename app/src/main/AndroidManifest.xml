@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.sazib.weatherapp">
 
-  <dist:module dist:instant="true"/>
+  <dist:module dist:instant="true" />
 
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-  <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
   <application
       android:name=".service.IVApp"
@@ -20,27 +20,21 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme"
       tools:ignore="GoogleAppIndexingWarning">
-
-    <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
-    <activity
-        android:name=".ui.mapview.view.MapActivity"
-        android:exported="true"
-        android:screenOrientation="portrait"
-        />
     <activity
         android:name=".ui.splash.view.SplashActivity"
         android:screenOrientation="portrait">
       <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
+        <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER"/>
+        <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
     <activity
+        android:name=".ui.mapview.view.MapActivity"
+        android:screenOrientation="portrait" />
+    <activity
         android:name=".ui.citylist.view.CityListActivity"
-        android:screenOrientation="portrait"/>
+        android:screenOrientation="portrait" />
   </application>
 
 </manifest>

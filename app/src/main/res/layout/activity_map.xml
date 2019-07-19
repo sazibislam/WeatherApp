@@ -46,8 +46,7 @@
         android:layout_height="match_parent"
         >
 
-      <include
-          layout="@layout/fragment_maps"
+      <com.google.android.gms.maps.MapView
           android:id="@+id/mapView"
           android:layout_width="0dp"
           android:layout_height="350dp"
